@@ -133,6 +133,14 @@ public class ModifierManager extends SimpleJsonResourceReloadListener implements
     modifiersRegistered = true;
   }
 
+  public void runAfterDynamicModifiersLoaded(ModifiersLoadedCallback callback) {
+    if (isDynamicModifiersLoaded()) {
+      callback.onLoaded(new ModifiersLoadedEvent());
+      return;
+    }
+    ModifiersLoadedEvent.EVENT.register(callback);
+  }
+
   /** Adds the managers as datapack listeners */
   private void addDataPackListeners() {
     ResourceManagerHelper.get(PackType.SERVER_DATA).registerReloadListener(this);

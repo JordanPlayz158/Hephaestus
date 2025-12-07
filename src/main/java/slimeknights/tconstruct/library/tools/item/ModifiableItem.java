@@ -50,6 +50,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import slimeknights.mantle.client.SafeClientAccess;
 import slimeknights.tconstruct.common.TinkerTags;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
+import slimeknights.tconstruct.library.modifiers.ModifierManager;
 import slimeknights.tconstruct.library.modifiers.TinkerHooks;
 import slimeknights.tconstruct.library.modifiers.hook.interaction.InteractionSource;
 import slimeknights.tconstruct.library.tools.IndestructibleItemEntity;
@@ -129,7 +130,7 @@ public class ModifiableItem extends Item implements IModifiableDisplay, UseFirst
 
   @Override
   public void verifyTagAfterLoad(CompoundTag nbt) {
-    ToolStack.verifyTag(this, nbt, getToolDefinition());
+    ModifierManager.INSTANCE.runAfterDynamicModifiersLoaded(e -> ToolStack.verifyTag(this, nbt, getToolDefinition()));
   }
 
   @Override
