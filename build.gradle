@@ -46,7 +46,7 @@ repositories {
 
 group = 'slimeknights.tconstruct'
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 
 // sets version to the slimeKnights version format
 task buildInfo {
